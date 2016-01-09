@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "maji.com.designehr"
+        versionCode = "1"
+        version     = "0.0.1" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Maji</name>
+
+    <description>
+        Testing for Maji.
+    </description>
+
+    <author href="https://designehr.com" email="support@designehr.com">
+        Maji
+    </author>
+
+    <!-- Phonegap Version -->
+    <preference name="phonegap-version" value="cli-5.2.0" />
+
+
+
+    <!-- /// ICONS /// -->
+    <icon src="icon.png" />
+
+
+
+    <gap:platform name="android" />
+    <preference name="permissions" value="none"/>
+
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm" version="0.3.4" />
+    <gap:plugin name="com.telerik.plugins.healthkit2" version="0.3.8" />
+    <gap:plugin name="cordova-plugin-bluetooth-serial" source="npm" version="0.4.5" />
+
+
+    <!-- min-SDK version for Android -->
+    <preference name="android-minSdkVersion" value="15" />
+
+</widget>
