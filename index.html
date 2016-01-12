@@ -4,15 +4,15 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  target-densitydpi=device-dpi" />
-
+        
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Bluetooth Serial Chat</title>
+        <title>BluefruitLE</title>
     </head>
     <body>
         <div class="app">
-            <h1>Bluetooth Serial Chat</h1>
+            <h1>BluefruitLE</h1>
             <div id="mainPage">
-                <ul id="deviceList">
+                <ul id="deviceList">                    
                 </ul>
                 <button id="refreshButton">Refresh</button>
             </div>
@@ -20,11 +20,10 @@
                 <div id="resultDiv"></div>
                 <div>
                     <input type="text" id="messageInput" value="Hello"/>
-                    <button id="sendButton">Send</button>
+                    <button id="sendButton">Send</button>                    
                 </div>
                 <button id="disconnectButton">Disconnect</button>
-            </div>
-            <div id="statusDiv"></div>
+            </div>            
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
