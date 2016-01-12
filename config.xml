@@ -30,7 +30,7 @@
     <gap:platform name="android" />
     <preference name="permissions" value="none"/>
 
-    <gap:plugin name="cordova-plugin-bluetooth-serial" source="npm" version="0.4.5" />
+    <gap:plugin name="cordova-plugin-ble-central" source="npm" version="1.0.3" />
 
 
     <!-- min-SDK version for Android -->
