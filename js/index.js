@@ -32,6 +32,16 @@ function stringToBytes(string) {
     return array.buffer;
 }
 
+function cleanString(string){
+    return string.substring(0, string.lastIndexOf("}")).replace(/ /g,'');
+}
+
+function isJson(string){                    // returns 'true' if is JSON
+    return (/^[\],:{}\s]*$/.test(text.replace(/\\["\\\/bfnrtu]/g, '@').
+        replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+        replace(/(?:^|:|,)(?:\s*\[)+/g, '')));
+}
+
 // this is Nordic's UART service
 var bluefruit = {
     serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
@@ -40,6 +50,7 @@ var bluefruit = {
 };
 
 var app = {
+    receive_data : [],              // for holding data until it all comes in
     initialize: function() {
         this.bindEvents();
         detailPage.hidden = true;
@@ -105,9 +116,18 @@ var app = {
 
     },
     onData: function(data) { // data received from Arduino
-        console.log(data);
-        resultDiv.innerHTML = resultDiv.innerHTML + "Received: " + bytesToString(data) + "<br/>";
-        resultDiv.scrollTop = resultDiv.scrollHeight;
+        var string = cleanString(bytesToString(data));
+
+        this.receive_data.push(string);
+
+        var full_string = this.receive_data.toString('');
+
+        if (isJson(full_string)){
+            var parsed = JSON.parse(full_string);
+            resultDiv.innerHTML = full_string;
+            resultDiv.scrollTop = resultDiv.scrollHeight;
+        }
+
     },
     sendData: function(event) { // send data to Arduino
 
