@@ -33,7 +33,7 @@ function stringToBytes(string) {
 }
 
 function cleanString(string){
-    return string.substring(0, string.lastIndexOf("}")).replace(/ /g,'');
+    return string.substring(0, string.lastIndexOf("}") + 1).replace(/ /g,'');
 }
 
 function isJson(string){                    // returns 'true' if is JSON
@@ -116,13 +116,13 @@ var app = {
 
     },
     onData: function(data) { // data received from Arduino
-        var string = cleanString(bytesToString(data));
+        var string = bytesToString(data);
 
         app.receive_data.push(string);
 
         var full_string = app.receive_data.join();
 
-        if (isJson(full_string)){
+        if (isJson(cleanString(full_string))){
             var parsed = JSON.parse(full_string);
             resultDiv.innerHTML = full_string;
             resultDiv.scrollTop = resultDiv.scrollHeight;
