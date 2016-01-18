@@ -120,7 +120,7 @@ var app = {
 
         app.receive_data.push(string);
 
-        var full_string = app.receive_data.join();
+        var full_string = app.receive_data.join('');
 
 
             var parsed = JSON.parse(full_string);
