@@ -120,7 +120,7 @@ var app = {
 
         app.receive_data.push(string);
 
-        var full_string = app.receive_data.toString('');
+        var full_string = app.receive_data.join();
 
         if (isJson(full_string)){
             var parsed = JSON.parse(full_string);
