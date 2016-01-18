@@ -118,9 +118,9 @@ var app = {
     onData: function(data) { // data received from Arduino
         var string = cleanString(bytesToString(data));
 
-        this.receive_data.push(string);
+        app.receive_data.push(string);
 
-        var full_string = this.receive_data.toString('');
+        var full_string = app.receive_data.toString('');
 
         if (isJson(full_string)){
             var parsed = JSON.parse(full_string);
