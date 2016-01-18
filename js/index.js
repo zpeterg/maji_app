@@ -122,11 +122,11 @@ var app = {
 
         var full_string = app.receive_data.join();
 
-        if (isJson(cleanString(full_string))){
+
             var parsed = JSON.parse(full_string);
             resultDiv.innerHTML = full_string;
             resultDiv.scrollTop = resultDiv.scrollHeight;
-        }
+
 
     },
     sendData: function(event) { // send data to Arduino
