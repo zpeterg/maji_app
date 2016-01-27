@@ -53,6 +53,7 @@ var app = {
     receive_data : [],              // for holding data until it all comes in
     initialize: function() {
         this.bindEvents();
+        alert('initializing');
         detailPage.hidden = true;
     },
     bindEvents: function() {
