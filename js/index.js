@@ -52,12 +52,12 @@ var bluefruit = {
 var app = {
     receive_data : [],              // for holding data until it all comes in
     initialize: function() {
-        this.bindEvents();
+        app.bindEvents();
         alert('initializing');
         detailPage.hidden = true;
     },
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', app.onDeviceReady, false);
         $('#refreshButton').click(app.refreshDeviceList);
         $('#sendButton').click(app.sendData);
         $('#disconnectButton').click(app.disconnect);
@@ -174,7 +174,7 @@ var app = {
         ble.disconnect(deviceId, app.showMainPage, app.onError);
     },
     clear: function(){
-        this.receive_data = [];
+        app.receive_data = [];
     },
     showMainPage: function() {
         mainPage.hidden = false;
