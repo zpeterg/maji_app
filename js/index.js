@@ -117,12 +117,15 @@ var app = {
     },
     onData: function(data) { // data received from Arduino
         var string = cleanString(bytesToString(data));          // strip the 'uart=' stuff off
-
+		alert(data);
         app.receive_data.push(string);
 
         var full_string = app.receive_data.join('');            // collapse the array
-
+		alert(full_string);
+		
         if (isJson(full_string)) {      // If json, print out
+			alert('is json!');
+			
             var parsed = JSON.parse(full_string);
             resultDiv.innerHTML = full_string;
             resultDiv.scrollTop = resultDiv.scrollHeight;
