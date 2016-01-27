@@ -33,15 +33,11 @@ function stringToBytes(string) {
 }
 
 function cleanString(string){
-    var rtn = '';
-
-    rtn = string.replace(/([A-Z])/g, '').replace(/\+/g, '').replace(/ /g,'');
-
-    return rtn;
+    return string.replace(/([A-Z])/g, '').replace(/\+/g, '').replace(/ /g,'');
 }
 
 function isJson(string){                    // returns 'true' if is JSON
-    return (/^[\],:{}\s]*$/.test(text.replace(/\\["\\\/bfnrtu]/g, '@').
+    return (/^[\],:{}\s]*$/.test(string.replace(/\\["\\\/bfnrtu]/g, '@').
         replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
         replace(/(?:^|:|,)(?:\s*\[)+/g, '')));
 }
@@ -61,11 +57,11 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        refreshButton.addEventListener('touchstart', this.refreshDeviceList, false);
-        sendButton.addEventListener('click', this.sendData, false);
-        disconnectButton.addEventListener('touchstart', this.disconnect, false);
-        clearButton.addEventListener('touchstart', this.clear, false);
-        deviceList.addEventListener('touchstart', this.connect, false); // assume not scrolling
+        $('#refreshButton').click(app.refreshDeviceList);
+        $('#sendButton').click(app.sendData);
+        $('#disconnectButton').click(app.disconnect);
+        $('#clearButton').click(app.clear);
+        $('#deviceList').click(app.connect); // assume not scrolling
     },
     onDeviceReady: function() {
         app.refreshDeviceList();
@@ -176,7 +172,7 @@ var app = {
         var deviceId = event.target.dataset.deviceId;
         ble.disconnect(deviceId, app.showMainPage, app.onError);
     },
-    clear: function(event){
+    clear: function(){
         this.receive_data = [];
     },
     showMainPage: function() {
