@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* global mainPage, deviceList, refreshButton */
+/* global mainPage, deviceList, refreshButton, clearButton */
 /* global detailPage, resultDiv, messageInput, sendButton, disconnectButton */
 /* global ble  */
 /* jshint browser: true , devel: true*/
@@ -60,6 +60,7 @@ var app = {
         refreshButton.addEventListener('touchstart', this.refreshDeviceList, false);
         sendButton.addEventListener('click', this.sendData, false);
         disconnectButton.addEventListener('touchstart', this.disconnect, false);
+        clearButton.addEventListener('touchstart', this.clear, false);
         deviceList.addEventListener('touchstart', this.connect, false); // assume not scrolling
     },
     onDeviceReady: function() {
@@ -121,7 +122,8 @@ var app = {
         app.receive_data.push(string);
 
         var full_string = app.receive_data.join('');            // collapse the array
-		alert(full_string);
+
+        alert(full_string);
 		
         if (isJson(full_string)) {      // If json, print out
 			alert('is json!');
@@ -130,6 +132,7 @@ var app = {
             resultDiv.innerHTML = full_string;
             resultDiv.scrollTop = resultDiv.scrollHeight;
         }
+
 
     },
     sendData: function(event) { // send data to Arduino
@@ -167,6 +170,9 @@ var app = {
     disconnect: function(event) {
         var deviceId = event.target.dataset.deviceId;
         ble.disconnect(deviceId, app.showMainPage, app.onError);
+    },
+    clear: function(event){
+        this.receive_data = [];
     },
     showMainPage: function() {
         mainPage.hidden = false;
