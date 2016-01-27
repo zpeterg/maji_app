@@ -117,7 +117,7 @@ var app = {
     },
     onData: function(data) { // data received from Arduino
         var string = cleanString(bytesToString(data));          // strip the 'uart=' stuff off
-		alert(data);
+		alert(string);
         app.receive_data.push(string);
 
         var full_string = app.receive_data.join('');            // collapse the array
