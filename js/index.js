@@ -33,7 +33,11 @@ function stringToBytes(string) {
 }
 
 function cleanString(string){
-    return string.substring(0, string.lastIndexOf("}") + 1).replace(/ /g,'');
+    var rtn = '';
+
+    rtn = string.replace(/([A-Z])/g, '').replace(/\+/g, '').replace(/ /g,'');
+
+    return rtn;
 }
 
 function isJson(string){                    // returns 'true' if is JSON
